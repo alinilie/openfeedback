@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+    {% if error %}
+        {{ dump(error) }}
+    {% endif %}
+
+    <form id="form" action="{{ path('login_check') }}" method="post">
+        <input label="Username" name="_username" value="{{ last_username }}"/>
+        <input label="Password" type="password" name="_password"/>
+
+        <button onclick="submitForm()">Submit</button>
+    </form>
+
+{% endblock %}
+
+
+{% block javascripts%}
+    <script>
+        function submitForm() {
+            document.getElementById('form').submit();
+        }
+    </script>
+{% endblock %}
